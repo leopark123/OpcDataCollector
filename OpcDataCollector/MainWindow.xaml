@@ -1,0 +1,31 @@
+﻿<Window x:Class="OpcDataCollector.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+        Title="OPC 数据采集器" Height="500" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+
+        <!-- 实时数据图表 -->
+        <lvc:CartesianChart Name="DataChart" Margin="10">
+            <lvc:CartesianChart.AxisX>
+                <lvc:Axis Title="时间" />
+            </lvc:CartesianChart.AxisX>
+            <lvc:CartesianChart.AxisY>
+                <lvc:Axis Title="值" />
+            </lvc:CartesianChart.AxisY>
+        </lvc:CartesianChart>
+
+        <!-- 控制面板 -->
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="10">
+            <TextBlock Text="报警阈值：" VerticalAlignment="Center" />
+            <TextBox Name="ThresholdInput" Width="100" Margin="5" />
+            <Button Content="设置阈值" Click="SetThreshold_Click" Margin="5" />
+            <Button Content="查询历史数据" Click="QueryHistory_Click" Margin="5" />
+            <Button Content="导出历史数据" Click="ExportData_Click" Margin="5" />
+        </StackPanel>
+    </Grid>
+</Window>
